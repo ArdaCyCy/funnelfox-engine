@@ -3,7 +3,7 @@
   import FunnelPlayer from '$lib/components/FunnelPlayer.svelte';
   import type { AnalyticsResponse, Funnel } from '$lib/types/funnel';
 
-  const backendUrl = env.PUBLIC_API_URL || 'http://localhost:8080';
+  const backendUrl = 'https://funnelfox-v2-api.onrender.com';
 
   let productName = $state('DEL LUPO 350 GSM Heavyweight Hoodie');
   let targetAudience = $state('Sokak modası tutkunları, sınırlı sayıda ilk drop, ücretsiz kargo');

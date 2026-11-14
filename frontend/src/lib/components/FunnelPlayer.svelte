@@ -23,7 +23,7 @@
   let paymentSuccess = $state(false);
   let processing = $state(false);
 
-  const backendUrl = env.PUBLIC_API_URL || 'http://localhost:8080';
+  const backendUrl = 'https://funnelfox-v2-api.onrender.com';
 
   function track(event: string, revenueCents = 0) {
     if (isPreview) return;
