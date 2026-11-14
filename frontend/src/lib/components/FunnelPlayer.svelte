@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { env } from '$env/dynamic/public';
   import type { FunnelVariant } from '$lib/types/funnel';
 
@@ -23,7 +23,7 @@
   let paymentSuccess = $state(false);
   let processing = $state(false);
 
-  const backendUrl = env.PUBLIC_API_URL || 'http://localhost:8080';
+  const backendUrl = env.PUBLIC_API_URL || 'https://funnelfox-v2-api.onrender.com';
 
   function track(event: string, revenueCents = 0) {
     if (isPreview) return;
@@ -53,12 +53,12 @@
   let activeOffer = $derived(
     variant.offers?.[selectedOfferKey] ||
       Object.values(variant.offers || {})[0] || {
-        title: 'Özel Teklif Paketi',
+        title: 'Ã–zel Teklif Paketi',
         price: '$79.00',
         priceCents: 7900,
-        description: 'Sınırlı süreli özel erişim paketi.',
-        features: ['Hızlı Teslimat', '30 Gün İade Garantisi'],
-        ctaText: 'Siparişi Tamamla'
+        description: 'SÄ±nÄ±rlÄ± sÃ¼reli Ã¶zel eriÅŸim paketi.',
+        features: ['HÄ±zlÄ± Teslimat', '30 GÃ¼n Ä°ade Garantisi'],
+        ctaText: 'SipariÅŸi Tamamla'
       }
   );
 
@@ -110,11 +110,11 @@
     {#if paymentSuccess}
       <div class="space-y-4 py-6 text-center">
         <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-3xl text-emerald-600">
-          ✓
+          âœ“
         </div>
-        <h2 class="text-2xl font-extrabold text-slate-900">Siparişin Onaylandı!</h2>
+        <h2 class="text-2xl font-extrabold text-slate-900">SipariÅŸin OnaylandÄ±!</h2>
         <p class="text-sm text-slate-600">
-          <strong>{activeOffer.title}</strong> ({activeOffer.price}) ödemesi başarıyla alındı ve analitik motoruna anlık işlendi.
+          <strong>{activeOffer.title}</strong> ({activeOffer.price}) Ã¶demesi baÅŸarÄ±yla alÄ±ndÄ± ve analitik motoruna anlÄ±k iÅŸlendi.
         </p>
         <button
           onclick={() => {
@@ -123,7 +123,7 @@
           }}
           class="mt-4 rounded-xl border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
         >
-          Huniyi Baştan Test Et
+          Huniyi BaÅŸtan Test Et
         </button>
       </div>
     {:else if checkoutOpen}
@@ -138,8 +138,8 @@
           <input type="email" required value="arda@dellupo.co" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm" />
         </div>
         <div>
-          <label class="mb-1 block text-xs font-semibold text-slate-600">Kart Bilgisi (Simülasyon)</label>
-          <input type="text" required value="4242 •••• •••• 4242   12/28   888" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 font-mono text-sm" />
+          <label class="mb-1 block text-xs font-semibold text-slate-600">Kart Bilgisi (SimÃ¼lasyon)</label>
+          <input type="text" required value="4242 â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ 4242   12/28   888" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 font-mono text-sm" />
         </div>
         <div class="flex gap-2 pt-2">
           <button
@@ -147,14 +147,14 @@
             onclick={() => (checkoutOpen = false)}
             class="rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-50"
           >
-            ← Geri
+            â† Geri
           </button>
           <button
             type="submit"
             disabled={processing}
             class="flex-1 rounded-xl bg-emerald-600 py-3 text-sm font-bold text-white shadow-lg hover:bg-emerald-700"
           >
-            {processing ? 'İşleniyor...' : `${activeOffer.price} Ödemeyi Tamamla`}
+            {processing ? 'Ä°ÅŸleniyor...' : `${activeOffer.price} Ã–demeyi Tamamla`}
           </button>
         </div>
       </form>
@@ -179,8 +179,8 @@
     {:else if step === 1}
       <div class="space-y-5">
         <div class="flex items-center justify-between text-xs font-semibold text-slate-400">
-          <span>ADIM 2 / 3 • KİŞİSELLEŞTİRME</span>
-          <button onclick={() => (step = 0)} class="text-slate-500 hover:text-slate-800">← Geri Dön</button>
+          <span>ADIM 2 / 3 â€¢ KÄ°ÅžÄ°SELLEÅžTÄ°RME</span>
+          <button onclick={() => (step = 0)} class="text-slate-500 hover:text-slate-800">â† Geri DÃ¶n</button>
         </div>
         <h2 class="text-2xl font-bold text-slate-900">{variant.quiz.question}</h2>
         <div class="space-y-3">
@@ -190,7 +190,7 @@
               class="flex w-full items-center justify-between rounded-2xl border-2 border-slate-200 p-4 text-left font-semibold text-slate-800 transition hover:border-indigo-600 hover:bg-indigo-50/50"
             >
               <span>{opt.label}</span>
-              <span class="text-indigo-600">→</span>
+              <span class="text-indigo-600">â†’</span>
             </button>
           {/each}
         </div>
@@ -198,8 +198,8 @@
     {:else}
       <div class="space-y-5">
         <div class="flex items-center justify-between text-xs font-semibold text-slate-400">
-          <span>SEÇİMİN: {selectedOptionLabel.toUpperCase()}</span>
-          <button onclick={() => (step = 1)} class="text-slate-500 hover:text-slate-800">← Geri Dön</button>
+          <span>SEÃ‡Ä°MÄ°N: {selectedOptionLabel.toUpperCase()}</span>
+          <button onclick={() => (step = 1)} class="text-slate-500 hover:text-slate-800">â† Geri DÃ¶n</button>
         </div>
         <div class="rounded-2xl bg-slate-900 p-6 text-white">
           <div class="flex items-baseline justify-between">
@@ -210,7 +210,7 @@
           <ul class="mt-4 space-y-2 text-sm text-slate-200">
             {#each activeOffer.features as feat}
               <li class="flex items-center gap-2">
-                <span class="text-emerald-400">✓</span> {feat}
+                <span class="text-emerald-400">âœ“</span> {feat}
               </li>
             {/each}
           </ul>
