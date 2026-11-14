@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ params, fetch, url, cookies }) => {
     cookies.set('ff_vid', visitorId, { path: '/', httpOnly: true, sameSite: 'lax', maxAge: 60 * 60 * 24 * 30 });
   }
 
-  const backendUrl = env.PUBLIC_API_URL || 'http://localhost:8080';
+  const backendUrl = env.PUBLIC_API_URL || 'https://funnelfox-v2-api.onrender.com';
   const forcedVariant = url.searchParams.get('variant');
   const utmSource = url.searchParams.get('utm_source') || 'direct';
   const query = forcedVariant ? `?variant=${encodeURIComponent(forcedVariant)}` : '';
